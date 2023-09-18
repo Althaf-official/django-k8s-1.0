@@ -8,11 +8,11 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
 import os
-# import pathlib
+import pathlib
 
 from django.core.wsgi import get_wsgi_application
 
-# CURRENT_DIR = pathlib.Path(__file__).parent
+CURRENT_DIR = pathlib.Path(__file__).parent
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_k8s.settings')
 
