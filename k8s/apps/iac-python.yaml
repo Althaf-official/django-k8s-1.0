@@ -1,35 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: iac-python-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-deployment
+      app: iac-python-deployment
   template:
     metadata:
       labels:
-        app: nginx-deployment
+        app: iac-python-deployment
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
+        - name: iac-python
+          image: codingforentrepreneurs/iac-python:latest
+          env:
+            - name: PORT
+              value: "8181"
           ports:
-            - containerPort: 80
+            - containerPort: 8181
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: iac-python-service
 spec:
   type: LoadBalancer
   ports:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8181
   selector:
-    app: nginx-deployment
+    app: iac-python-deployment
