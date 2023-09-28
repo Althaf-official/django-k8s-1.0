@@ -36,6 +36,3 @@ spec:
       targetPort: 8181
   selector:
     app: iac-python-deployment
-
-
-
