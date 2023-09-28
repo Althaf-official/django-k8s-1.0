@@ -96,9 +96,11 @@ DB_IS_AVAIL = all([
     DB_PORT,
 ])
 
+DB_IGNORE_SSL=os.environ.get("DB_IGNORE_SSL") == "true"
+
 POSTGRES_READY= str(os.environ.get('POSTGRES_READY')) == "1"
 
-if DB_IS_AVAIL and POSTGRES_READY:
+if DB_IS_AVAIL:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
