@@ -20,6 +20,8 @@ spec:
         image: registry.digitalocean.com/mask8s/django-k8s-web:latest
         ports:
         - containerPort: 80
+      imagePullSecrets:
+        - name: mask8s
 
 
 
