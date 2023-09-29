@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: django-k8s-web-deployment
   labels:
-    app: nginx
+    app: django-k8s-web-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: django-k8s-web-deployment
   template:
     metadata:
       labels:
-        app: nginx
+        app: django-k8s-web-deployment
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: django-k8s-web
+        image: registry.digitalocean.com/mask8s/django-k8s-web:latest
         ports:
         - containerPort: 80
 
