@@ -115,7 +115,8 @@ if DB_IS_AVAIL:
     if not DB_IGNORE_SSL:
         DATABASES['default']["OPTIONS"]={
             "sslmode": "require"
-        }
+         }
+
 
 
 
