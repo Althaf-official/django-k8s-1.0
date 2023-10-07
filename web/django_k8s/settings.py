@@ -119,7 +119,6 @@ if DB_IS_AVAIL:
 
 
 
-
 print(DATABASES)
 
 # Password validation
