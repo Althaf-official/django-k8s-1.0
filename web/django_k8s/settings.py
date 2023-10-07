@@ -32,7 +32,6 @@ if ENV_ALLOWED_HOST:
     ALLOWED_HOSTS = [ENV_ALLOWED_HOST]
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
