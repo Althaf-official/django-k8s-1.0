@@ -17,3 +17,4 @@ docker push registry.digitalocean.com/mask8s/django-k8s-web --all-tags
 '''
 
 
+
