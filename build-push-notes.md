@@ -1,4 +1,9 @@
+## login with API tocken
 
+'''
+docker login registry.digitalocean.com
+
+'''
 
 # build docker image
 """
