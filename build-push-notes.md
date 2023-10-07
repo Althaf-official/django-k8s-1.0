@@ -16,3 +16,4 @@ docker build -t registry.digitalocean.com/mask8s/django-k8s-web:latest -f Docker
 docker push registry.digitalocean.com/mask8s/django-k8s-web --all-tags
 '''
 
+
