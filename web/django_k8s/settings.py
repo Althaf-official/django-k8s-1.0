@@ -26,8 +26,10 @@ SECRET_KEY = 'django-insecure-%aq00(5p9pej+g*9+l3n$rps801o$xtk*zg(a9ar+thj630yc)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('POSTGRES_READY')) == "0"
 
-
-ALLOWED_HOSTS = ['144.126.254.126','127.0.0.1']
+ENV_ALLOWED_HOST = os.environ.get("ENV_ALLOWED_HOST")
+ALLOWED_HOSTS = []
+if ENV_ALLOWED_HOST:
+    ALLOWED_HOSTS = [ENV_ALLOWED_HOST]
 
 
 # Application definition
