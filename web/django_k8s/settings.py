@@ -33,6 +33,7 @@ if ENV_ALLOWED_HOST:
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
