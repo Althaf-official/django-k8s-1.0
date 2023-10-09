@@ -11,3 +11,5 @@ docker build -f Dockerfile \
     -t registry.digitalocean.com/mask8s/django-k8s-web:v1 \
     .
 '''
+
+#https://github.com/codingforentrepreneurs/Django-Kubernetes
