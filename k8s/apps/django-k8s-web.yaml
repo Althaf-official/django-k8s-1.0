@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: django-k8s-web
-        image: registry.digitalocean.com/mask8s/django-k8s-web:02f87c6
+        image: registry.digitalocean.com/mask8s/django-k8s-web:latest
         envFrom:
           - secretRef:
               name: django-k8s-web-prod-env
@@ -43,5 +43,6 @@ spec:
       targetPort: 8002
   selector:
     app: django-k8s-web-deployment
+
 
 
