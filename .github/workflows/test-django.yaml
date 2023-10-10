@@ -25,21 +25,21 @@ jobs:
       POSTGRES_USER: myuser
       POSTGRES_HOST: localhost
       POSTGRES_PORT: 5432
-    # services:
-    #   postgress_main:
-    #     image: postgress:15
-    #     env:
-    #       POSTGRES_DB: ${{ env.POSTGRES_DB }}
-    #       POSTGRES_USER: ${{ env.POSTGRES_USER }}
-    #       POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-    #     ports:
-    #       - 5432:5432
+    services:
+      postgress_main:
+        image: postgres:15
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
 
-        # options: >-
-        #   --health-cmd pg_isready 
-        #   --health-interval 10s 
-        #   --health-timeout 5s 
-        #   --health-retries 5
+        options: >-
+          --health-cmd pg_isready 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
     strategy:
       max-parallel: 4
       matrix:
