@@ -19,5 +19,3 @@ jobs:
       DJANGO_SECRET_KEY: test-key-not-good-maybe-one-better
     steps:
     - uses: actions/checkout@v3
-
-        
