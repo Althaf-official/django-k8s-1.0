@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: django-k8s-web
-        image: registry.digitalocean.com/mask8s/django-k8s-web:latest
+        image: registry.digitalocean.com/mask8s/django-k8s-web:02f87c6
         envFrom:
           - secretRef:
               name: django-k8s-web-prod-env
