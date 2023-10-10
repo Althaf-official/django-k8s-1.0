@@ -1,4 +1,4 @@
-name: Django CI
+name: Build Docker Container & Push to DO Registry
 
 on:
   workflow_call:
@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  docker-build:
 
     runs-on: ubuntu-latest
 
