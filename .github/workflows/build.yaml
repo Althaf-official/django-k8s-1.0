@@ -17,6 +17,7 @@ jobs:
     needs: [test_django_job]
     env:
       DJANGO_SECRET_KEY: test-key-not-good-maybe-one-better
+      CLUSTER_NAME: django-k8s
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -36,3 +37,6 @@ jobs:
     - name: Push image
       run: |
         docker push registry.digitalocean.com/mask8s/django-k8s-web --all-tags
+    - name: K8s cluster kubeconfig file with/ short-lived creds
+      run: |
+        doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
