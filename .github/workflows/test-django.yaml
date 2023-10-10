@@ -18,13 +18,13 @@ jobs:
       run:
         working-directory: ./web
 
-    # env:
-    #   DJANGO_SECRET_KEY: test-key-not-good-maybe-one-better
-    #   POSTGRES_DB: dockerdc
-    #   POSTGRES_PASSWORD: mysecretpassword
-    #   POSTGRES_USER: myuser
-    #   POSTGRES_HOST: localhost
-    #   POSTGRES_PORT: 5432
+    env:
+      DJANGO_SECRET_KEY: test-key-not-good-maybe-one-better
+      POSTGRES_DB: dockerdc
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: myuser
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
     # services:
     #   postgress_main:
     #     image: postgress:15
