@@ -40,12 +40,12 @@ jobs:
     - name: K8s cluster kubeconfig file with/ short-lived creds
       run: |
         doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
-    - name: Update deployment secrets:
+    - name: Update deployment secrets
       run: |
         cat << EOF >> web/.env.prod
         DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
         DJANGO_SUPERUSER_PASSWORD=mydjangopw
-        DJANGO_SUERPUSER_EMAIL=hello@teamcfe.com
+        DJANGO_SUPERUSER_EMAIL=hello@teamcfe.com
         DJANGO_SECRET_KEY=y%lo(5@h3jshmf11oj)61ej6bq#s!xk@9a&d4wjpt9=p$&d=2p
         ENV_ALLOWED_HOST=144.126.254.126
         POSTGRES_READY=0
@@ -54,8 +54,9 @@ jobs:
         POSTGRES_USER=doadmin
         POSTGRES_HOST=django-k8s-db-postgresql-do-user-14672195-0.b.db.ondigitalocean.com
         POSTGRES_PORT=25060
-        EOF 
-        kubectl delete django-k8s-web-prod-env
+        EOF
+
+        kubectl delete secret django-k8s-web-prod-env
         kubectl create secret generic django-k8s-web-prod-env --from-env-file=web/.env.prod
     - name: Update Deployment image
       run: |
