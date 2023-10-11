@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%aq00(5p9pej+g*9+l3n$rps801o$xtk*zg(a9ar+thj630yc)
 DEBUG = str(os.environ.get('POSTGRES_READY')) == "0"
 
 ENV_ALLOWED_HOST = os.environ.get("ENV_ALLOWED_HOST")
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["144.126.254.126"]
 if ENV_ALLOWED_HOST:
     ALLOWED_HOSTS = [ENV_ALLOWED_HOST]
 
