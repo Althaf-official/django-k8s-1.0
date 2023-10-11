@@ -40,13 +40,30 @@ jobs:
     - name: K8s cluster kubeconfig file with/ short-lived creds
       run: |
         doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
+    - name: Update deployment secrets:
+      run: |
+        cat << EOF >> web/.env.prod
+        DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
+        DJANGO_SUPERUSER_PASSWORD=mydjangopw
+        DJANGO_SUERPUSER_EMAIL=hello@teamcfe.com
+        DJANGO_SECRET_KEY=y%lo(5@h3jshmf11oj)61ej6bq#s!xk@9a&d4wjpt9=p$&d=2p
+        ENV_ALLOWED_HOST=144.126.254.126
+        POSTGRES_READY=0
+        POSTGRES_DB=defaultdb
+        POSTGRES_PASSWORD=AVNS_pUVP1af8wnU95LLEyl4
+        POSTGRES_USER=doadmin
+        POSTGRES_HOST=django-k8s-db-postgresql-do-user-14672195-0.b.db.ondigitalocean.com
+        POSTGRES_PORT=25060
+        EOF 
+        kubectl delete django-k8s-web-prod-env
+        kubectl create secret generic django-k8s-web-prod-env --from-env-file=web/.env.prod
     - name: Update Deployment image
       run: |
         kubectl set image deployment/django-k8s-web-deployment django-k8s-web=registry.digitalocean.com/mask8s/django-k8s-web:${GITHUB_SHA::7}
     - name: Wait for rollout to finish
       run: |
         kubectl rollout status deployment/django-k8s-web-deployment
-        
+
     - name: Migrate Database Command
       run: |
         export SINGLE_POD_NAME=$(kubectl get pod -l app=django-k8s-web-deployment -o jsonpath="{.items[0].metadata.name}")
