@@ -4,16 +4,12 @@ on:
   workflow_call:
   workflow_dispatch:
     
-
 jobs:
   django_test:
-
     runs-on: ubuntu-latest
-
     defaults:
       run:
         working-directory: ./web
-
     env:
       DJANGO_SECRET_KEY: test-key-not-good-maybe-one-better
       POSTGRES_DB: dockerdc
@@ -21,6 +17,7 @@ jobs:
       POSTGRES_USER: myuser
       POSTGRES_HOST: localhost
       POSTGRES_PORT: 5432
+      DB_IGNORE_SSL: "true"
     services:
       postgress_main:
         image: postgres:15
