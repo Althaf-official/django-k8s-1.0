@@ -68,11 +68,12 @@ jobs:
       run: |
         kubectl rollout status deployment/django-k8s-web-deployment
 
-    - name: Migrate Database Command
+    - name: Post-build Django Commands - Migrate / Collecetstatic
       run: |
         export SINGLE_POD_NAME=$(kubectl get pod -l app=django-k8s-web-deployment -o jsonpath="{.items[0].metadata.name}")
         kubectl exec -it $SINGLE_POD_NAME -- bash /app/migrate.sh
         kubectl exec -it $SINGLE_POD_NAME -- bash /app/collectstatic.sh
+
 
 
 
