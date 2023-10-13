@@ -55,6 +55,3 @@ jobs:
       run: |
         python manage.py test
 
-
-
-
