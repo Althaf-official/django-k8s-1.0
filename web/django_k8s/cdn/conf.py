@@ -13,3 +13,4 @@ DEFAULT_FILE_STORAGE="django_k8s.cdn.backends.MediaRootS3BotoStorage"
 STATICFILES_STORAGE="django_k8s.cdn.backends.StaticRootS3BotoStorage"
 
 #With these settings in place, your Django application will store and serve static and media files from DigitalOcean Spaces, and the provided AWS access keys and endpoint URL will be used for authentication and file storage.
+
